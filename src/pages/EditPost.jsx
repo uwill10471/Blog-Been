@@ -16,6 +16,8 @@ function EditPost() {
                 navigate('/')
             }
         })
+    }else{
+        navigate('/all-posts')
     }
    },[slug,navigate])
   
