@@ -12,15 +12,15 @@ import Signup from './pages/Signup.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Post from './pages/Post.jsx'
 import AllPosts from './pages/AllPosts.jsx'
-
+import testHome from './pages/testHome.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
         {
-            path: "/home",
-            element: <Home />,
+            path: "/",
+            element: <Home authentication />,
         },
         {
             path: "/login",

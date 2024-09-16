@@ -20,7 +20,7 @@ export default function Login(){
             //get user data
             const userData = await authService.getCurrentUser()
             if(userData) dispatch(authLogin(userData));
-            navigate("/home") // get somewhere on own
+            navigate("/") // get somewhere on own
          }
         }catch(error){
             setError(error.message)

@@ -14,6 +14,7 @@ export default function Post() {
 
     const isAuthor = post && userData ? post.userId === userData.$id : false;
 
+
     useEffect(() => {
         if (slug) {
             appwriteService.getPost(slug).then((post) => {
@@ -23,14 +24,22 @@ export default function Post() {
         } else navigate("/");
     }, [slug, navigate]);
 
-    const deletePost = () => {
-        appwriteService.deletePost(post.$id).then((status) => {
-            if (status) {
-                appwriteService.deleteFile(post.featuredImage);
-                navigate("/");
-            }
-        });
-    };
+   const deletePost = async () => {
+    try {
+        const status = await appwriteService.deletePost(post.$id);
+       
+
+        if (status) {
+            await appwriteService.deleteFile(post.featuredImage);
+            
+            navigate("/");
+        }
+    } catch (error) {
+        console.error("Error deleting post or file:", error);
+    }
+};
+
+
 
     return post ? (
         <div className="py-8">
@@ -52,6 +61,7 @@ export default function Post() {
                             <Button bgColor="bg-red-500" onClick={deletePost}>
                                 Delete
                             </Button>
+                            {/* <button  onClick={deletePost}> Delete</button> */}
                         </div>
                     )}
                 </div>

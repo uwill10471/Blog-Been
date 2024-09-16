@@ -10,7 +10,7 @@ export default function Header(){
 
   const navItems =[{ //in navigation bar this helps to add new things directly
    name: 'Home',
-   slug: "/home",
+   slug: "/",
    active: authStatus
   },
   {
